@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    max-width: 100%;
+    width: 600px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.game-info {
+    margin: 20px 0;
+    font-size: 1.1em;
+}
+
+.game-info p {
+    margin: 5px 0;
+}
+
+.board {
+    display: grid;
+    gap: 5px;
+    background-color: #005a9c;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.cell {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.cell.red {
+    background-color: var(--red-color, #ff4136);
+}
+
+.cell.yellow {
+    background-color: var(--yellow-color, #ffdc00);
+}
+
+.cell.drop-animation {
+    animation: dropPiece 0.5s ease-in-out;
+}
+
+.cell.winning {
+    box-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;
+    animation: pulse 1s infinite;
+}
+
+@keyframes dropPiece {
+    from {
+        transform: translateY(-500px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.controls {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button, select, input[type="color"] {
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+input[type="color"] {
+    padding: 2px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+}
+
+button:hover, select:hover, input[type="color"]:hover {
+    background-color: #005a9c;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.game-log {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-log h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+
+#game-log {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#game-log li {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+#current-player {
+    font-weight: bold;
+    color: var(--red-color, #ff4136);
+}
+
+#red-score, #yellow-score {
+    font-weight: bold;
+}
+
+#red-score {
+    color: var(--red-color, #ff4136);
+}
+
+#yellow-score {
+    color: var(--yellow-color, #ffdc00);
+}
+
+#timer {
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+    .board {
+        transform: scale(0.8);
+    }
+    .controls {
+        flex-direction: column;
+    }
+    .cell {
+        min-width: 40px;
+        min-height: 40px;
+    }
+}

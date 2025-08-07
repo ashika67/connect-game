@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Connect 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DropDown</h1>
+        <div class="game-info">
+            <p>Current Player: <span id="current-player">Red</span></p>
+            <p id="game-status">Game in progress</p>
+            <p>Score - Red: <span id="red-score">0</span> | Yellow: <span id="yellow-score">0</span></p>
+            <p>Time Left: <span id="timer">30</span>s</p>
+        </div>
+        <div class="controls">
+            <label for="board-size">Board Size:</label>
+            <select id="board-size">
+                <option value="6x7">6x7 (Standard)</option>
+                <option value="8x8">8x8</option>
+            </select>
+            <label for="timer-limit">Turn Time (s):</label>
+            <select id="timer-limit">
+                <option value="10">10s</option>
+                <option value="20">20s</option>
+                <option value="30">30s</option>
+            </select>
+            <label for="red-color">Red Color:</label>
+            <input type="color" id="red-color" value="#ff4136">
+            <label for="yellow-color">Yellow Color:</label>
+            <input type="color" id="yellow-color" value="#ffdc00">
+            <button id="reset-button">Reset Game</button>
+            <button id="undo-button" disabled>Undo Move</button>
+            <button id="ai-button">Play Against AI</button>
+            <select id="ai-difficulty">
+                <option value="easy">Easy AI</option>
+                <option value="medium">Medium AI</option>
+                <option value="hard">Hard AI</option>
+            </select>
+        </div>
+        <div class="board" id="board"></div>
+        <div class="game-log">
+            <h3>Game Log</h3>
+            <ul id="game-log"></ul>
+        </div>
+    </div>
+    <audio id="drop-sound" src="drop.mp3"></audio>
+    <audio id="win-sound" src="win.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
